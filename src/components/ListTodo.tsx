@@ -1,16 +1,20 @@
-import { FC, useState } from "react";
+import { FC } from "react";
+import { Link } from "react-router-dom";
 import { deleteTodo, searchTodo } from "../features/TodoSlice";
 import { openModal } from "../features/ModalSlice";
-import { Link } from "react-router-dom";
+import useListTodo from "../hooks/useListTodo";
 import Modal from "../components/Modal";
-import { useDispatch } from "react-redux";
-import { useSelector, AppDispatch } from "../store/store";
 
 const ListTodo: FC = () => {
-  const dispatch: AppDispatch = useDispatch();
-  const { todoItemsData, amount, searchKeyword } = useSelector((state) => state.todo);
-  const [ filterVal, setFilterVal ] = useState("");
-  const { isOpen } = useSelector((state) => state.modal);
+  const {
+    dispatch,
+    todoItemsData,
+    amount,
+    searchKeyword,
+    filterVal,
+    setFilterVal,
+    isOpen,
+  } = useListTodo();
 
   if (amount === 0) {
     return (
