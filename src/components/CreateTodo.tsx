@@ -1,15 +1,16 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import { addTodo } from "../features/TodoSlice";
-import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "../store/store";
-
+import useCreateTodo from "../hooks/useCreateTodo";
 
 const CreateTodo: FC = () => {
-  const [ todoTitle, setTodoTitle ] = useState<string | undefined>("");
-  const [ todoContent, setTodoContent ] = useState<string | undefined>("");
-  const dispatch: AppDispatch = useDispatch();
-  const navigate = useNavigate();
+  const {
+    todoTitle,
+    setTodoTitle,
+    todoContent,
+    setTodoContent,
+    dispatch,
+    navigate,
+  } = useCreateTodo();
 
   return (
     <div className="form common-form flex-form">
@@ -18,6 +19,7 @@ const CreateTodo: FC = () => {
         onSubmit={(e) => {
           e.preventDefault();
           if (todoTitle && todoContent) {
+            //フォームに値が入力されている場合のみDispatchする
             dispatch(addTodo({ title: todoTitle, content: todoContent }));
             navigate("/");
           } else {
