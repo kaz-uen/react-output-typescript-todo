@@ -1,25 +1,9 @@
 import { FC } from "react";
-import { useParams, Link } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { useSelector } from "../store/store";
-import { TodoItemType } from "../types/TodoType";
+import { Link } from "react-router-dom";
+import useDetailTodo from "../hooks/useDetailTodo";
 
 const DetailTodo: FC = () => {
-  const todoId = Number(useParams<string>().paramId);
-  const { todoItemsData } = useSelector((state) => state.todo);
-  const [ todo, setTodo ] = useState<TodoItemType>({
-    id: 0,
-    title: "",
-    content: "",
-  });
-
-  useEffect(() => {
-    todoItemsData.map((item) => {
-      if (item.id === todoId) {
-        setTodo(item);
-      }
-    });
-  }, [todoId]);
+  const todo = useDetailTodo();
 
   return (
     <>
@@ -35,7 +19,9 @@ const DetailTodo: FC = () => {
       </div>
 
       <div className="btn-center">
-        <Link className="default-btn" to="/">TOPへ戻る</Link>
+        <Link className="default-btn" to="/">
+          TOPへ戻る
+        </Link>
       </div>
     </>
   );
