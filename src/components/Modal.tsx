@@ -1,13 +1,10 @@
 import { FC } from "react";
-import { useDispatch } from "react-redux";
 import { clearTodo } from "../features/TodoSlice";
 import { closeModal } from "../features/ModalSlice";
-import { useSelector, AppDispatch } from "../store/store";
-
+import useModal from "../hooks/useModal";
 
 const Modal: FC = () => {
-  const dispatch: AppDispatch = useDispatch();
-  const { todoItemsData, amount } = useSelector((state) => state.todo);
+  const { dispatch, todoItemsData, amount } = useModal();
 
   return (
     <aside className="modal-container">
