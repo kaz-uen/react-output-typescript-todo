@@ -1,13 +1,12 @@
 import { FC } from "react";
 import { Routes, Route } from "react-router-dom";
-
-import Layout from "../components/Layout";
-import Home from "../components/Home";
-import ListTodo from "../components/ListTodo";
-import DetailTodo from "../components/DetailTodo";
-import CreateTodo from "../components/CreateTodo";
-import EditTodo from "../components/EditTodo";
-import NotFound from "../components/NotFound";
+import Layout from "../pages/Layout";
+import Home from "../pages/Home";
+import ListTodo from "../pages/ListTodo/layout";
+import DetailTodo from "../pages/DetailTodo/layout";
+import CreateTodo from "../pages/CreateTodo/layout";
+import EditTodo from "../pages/EditTodo/layout";
+import NotFound from "../pages/NotFound";
 
 const Router: FC = () => {
   return (
