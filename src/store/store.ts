@@ -1,5 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { useSelector as rawUseSelector, TypedUseSelectorHook } from "react-redux";
+import {
+  useSelector as rawUseSelector,
+  TypedUseSelectorHook,
+} from "react-redux";
 import TodoReducer from "../features/TodoSlice";
 import ModalReducer from "../features/ModalSlice";
 
