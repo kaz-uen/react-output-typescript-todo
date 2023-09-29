@@ -1,28 +1,23 @@
 import { FC } from "react";
 import { Routes, Route } from "react-router-dom";
-import Layout from "../pages/Layout";
 import Home from "../pages/Home";
-import ListTodo from "../pages/ListTodo/layout";
-import DetailTodo from "../pages/DetailTodo/layout";
-import CreateTodo from "../pages/CreateTodo/layout";
-import EditTodo from "../pages/EditTodo/layout";
+import TopTodo from "../pages/TopTodo";
+import DetailTodo from "../pages/DetailTodo";
+import CreateTodo from "../pages/CreateTodo";
+import EditTodo from "../pages/EditTodo";
 import NotFound from "../pages/NotFound";
 
 const Router: FC = () => {
   return (
-    <>
-      <Routes>
-        <Route element={<Layout />}>
-          <Route path="/" element={<Home />}>
-            <Route index element={<ListTodo />} />
-            <Route path={`detail/:paramId`} element={<DetailTodo />} />
-          </Route>
-          <Route path="/create" element={<CreateTodo />} />
-          <Route path={`/edit/:paramId`} element={<EditTodo />} />
-          <Route path="*" element={<NotFound />} />
-        </Route>
-      </Routes>
-    </>
+    <Routes>
+      <Route path="/" element={<Home />}>
+        <Route index element={<TopTodo />} />
+        <Route path={`detail/:paramId`} element={<DetailTodo />} />
+      </Route>
+      <Route path="/create" element={<CreateTodo />} />
+      <Route path={`/edit/:paramId`} element={<EditTodo />} />
+      <Route path="*" element={<NotFound />} />
+    </Routes>
   );
 };
 

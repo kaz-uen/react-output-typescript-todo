@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { TextAreaProps } from "../../../types/TodoType";
+import { TextAreaProps } from "../../../types/FormType";
 
 const TextArea: FC<TextAreaProps> = ({ title, id, placeholder, value, onChange }) => {
   return (

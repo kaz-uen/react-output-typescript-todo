@@ -30,3 +30,10 @@ export const INITIAL_TODO_ID: number = 1;
 export const INITIAL_MODAL_STATE: ModalStateType = {
   isOpen: false,
 };
+
+export const PAGE_TITLE = {
+  top: "Tasks",
+  create: "Create Todo",
+  edit: "Edit Todo",
+  detail: "Detail Todo",
+};

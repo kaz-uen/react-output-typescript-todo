@@ -1,9 +1,13 @@
 import { FC } from "react";
 import { Link } from "react-router-dom";
-import useDetailTodoTemplate from "../../hooks/DetailTodo/useDetailTodoTemplate";
+import useDetailTodoStateHandle from "../../../features/hooks/DetailTodo/useDetailTodoStateHandle";
+import PageTitle from "../../atoms/PageTitle";
+import { PAGE_TITLE } from "../../../constants/InitialData";
 
-const DetailTodo: FC = () => {
-  const { todo } = useDetailTodoTemplate();
+const DetailTodoContent: FC = () => {
+  const Title = PAGE_TITLE.detail;
+
+  const { todo } = useDetailTodoStateHandle();
   const { id, title, content } = todo;
   const texts = content?.split(/(\n)/).map((text) => {
     return text.match(/\n/) ? <br /> : text;
@@ -12,6 +16,7 @@ const DetailTodo: FC = () => {
   return (
     <>
       <div className="content">
+        <PageTitle title={Title} />
         <p className="content-number">ID: {id}</p>
         <h3 className="content-title">{title}</h3>
         <div className="content-body">
@@ -31,4 +36,4 @@ const DetailTodo: FC = () => {
   );
 };
 
-export default DetailTodo;
+export default DetailTodoContent;

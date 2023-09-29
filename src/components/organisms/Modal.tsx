@@ -1,11 +1,11 @@
 import { FC } from "react";
-import { clearTodo } from "../../features/TodoSlice";
-import { closeModal } from "../../features/ModalSlice";
+import { clearTodo } from "../../features/actions/TodoSlice";
+import { closeModal } from "../../features/actions/ModalSlice";
 import Button from "../atoms/Button";
-import useModal from "../../hooks/Modal/useModal";
+import useModalStateHandle from "../../features/hooks/Modal/useModalStateHandle";
 
 const Modal: FC = () => {
-  const { dispatch, todoItemsData, amount } = useModal();
+  const { dispatch, todoItemsData, amount } = useModalStateHandle();
 
   return (
     <aside className="modal-container">

@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { FormProps } from "../../../types/TodoType";
+import { FormProps } from "../../../types/FormType";
 
 const Form: FC<FormProps> = ({ onSubmit, className, children }) => {
   return (

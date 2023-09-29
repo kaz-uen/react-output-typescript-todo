@@ -1,14 +1,7 @@
 import { FC } from "react";
-import { InputProps } from "../../../types/TodoType";
+import { InputProps } from "../../../types/FormType";
 
-const Input: FC<InputProps> = ({
-  title,
-  id,
-  type,
-  placeholder,
-  value,
-  onChange,
-}) => {
+const Input: FC<InputProps> = ({ title, id, type, placeholder, value, onChange }) => {
   return (
     <>
       <label htmlFor={id}>{title}</label>

@@ -1,6 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { TodoStateType } from "../types/TodoType";
-import { INITIAL_TODO_STATE, INITIAL_TODO_ID } from "../constants/InitialData";
+import { TodoStateType } from "../../types/TodoType";
+import {
+  INITIAL_TODO_STATE,
+  INITIAL_TODO_ID,
+} from "../../constants/InitialData";
 
 const TodoSlice = createSlice({
   name: "todo",
@@ -22,6 +25,7 @@ const TodoSlice = createSlice({
         content: action.payload.content,
       });
       state.amount += 1;
+      state.searchKeyword = "";
     },
     updateTodo(state, action): void {
       const newTodoItems = state.todoItemsData.map((item) => {
@@ -44,9 +48,8 @@ const TodoSlice = createSlice({
       state.amount = state.todoItemsData.length;
     },
     clearTodo(state, action): TodoStateType {
-      const newTodoState: TodoStateType = action.payload;
-      newTodoState.todoItemsData = [];
-      newTodoState.amount = 0;
+      let newTodoState: TodoStateType = action.payload;
+      newTodoState = { todoItemsData: [], amount: 0, searchKeyword: "" };
       return newTodoState;
     },
     searchTodo(state, action): void {

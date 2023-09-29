@@ -1,21 +1,16 @@
-import { useCallback, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useCallback, useEffect, useState } from "react";
+import { AppDispatch, useSelector } from "../../../store/store";
+import { TodoItemType } from "../../../types/TodoType";
 import { useNavigate, useParams } from "react-router-dom";
-import { AppDispatch } from "../../store/store";
-import { updateTodo } from "../../features/TodoSlice";
-import useEditTodoState from "./useEditTodoState";
-import { EventType } from "../../types/EventType";
+import { useDispatch } from "react-redux";
+import { EventType } from "../../../types/EventType";
+import { updateTodo } from "../../actions/TodoSlice";
 
-export const useEditTodoTemplate = () => {
-  const {
-    todo,
-    setTodo,
-    updateTitle,
-    setUpdateTitle,
-    updateContent,
-    setUpdateContent,
-    todoItemsData,
-  } = useEditTodoState();
+const useEditTodoStateHandle = () => {
+  const [todo, setTodo] = useState<TodoItemType | undefined>();
+  const [updateTitle, setUpdateTitle] = useState<string | undefined>("");
+  const [updateContent, setUpdateContent] = useState<string | undefined>("");
+  const { todoItemsData } = useSelector((state) => state.todo);
 
   const todoId = Number(useParams().paramId);
   const dispatch: AppDispatch = useDispatch();
@@ -30,17 +25,6 @@ export const useEditTodoTemplate = () => {
       }
     });
   }, [todoId]);
-
-  const handleChangeTitle: EventType["onChangeInput"] = useCallback((e) => {
-    setUpdateTitle(e.target.value);
-  }, []);
-
-  const handleChangeContent: EventType["onChangeTextArea"] = useCallback(
-    (e) => {
-      setUpdateContent(e.target.value);
-    },
-    []
-  );
 
   const updateTodoSubmit: EventType["onSubmit"] = useCallback(
     (e) => {
@@ -63,8 +47,13 @@ export const useEditTodoTemplate = () => {
     [updateTitle, updateContent]
   );
 
-  return [
-    { updateTitle, updateContent },
-    { handleChangeTitle, handleChangeContent, updateTodoSubmit },
-  ];
+  return {
+    updateTitle,
+    setUpdateTitle,
+    updateContent,
+    setUpdateContent,
+    updateTodoSubmit,
+  };
 };
+
+export default useEditTodoStateHandle;

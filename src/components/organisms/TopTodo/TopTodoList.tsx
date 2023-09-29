@@ -1,16 +1,21 @@
 import { FC } from "react";
 import { Link } from "react-router-dom";
-import { deleteTodo, searchTodo } from "../../features/TodoSlice";
-import { openModal } from "../../features/ModalSlice";
-import Form from "../../components/atoms/Form";
-import Input from "../../components/atoms/Input";
-import Button from "../../components/atoms/Button";
-import Modal from "../../components/templates/Modal";
-import useListTodoState from "../../hooks/ListTodo/useListTodoState";
+import { deleteTodo, searchTodo } from "../../../features/actions/TodoSlice";
+import { openModal } from "../../../features/actions/ModalSlice";
+import Form from "../../atoms/Form";
+import Input from "../../atoms/Input";
+import Button from "../../atoms/Button";
+import Modal from "../Modal";
+import useListTodoStateHandle from "../../../features/hooks/ListTodo/useListTodoStateHandle";
 import { useDispatch } from "react-redux";
-import { AppDispatch } from "../../store/store";
+import { AppDispatch } from "../../../store/store";
+import PageTitle from "../../atoms/PageTitle";
+import { PAGE_TITLE } from "../../../constants/InitialData";
 
-const ListTodo: FC = () => {
+const TopTodoList: FC = () => {
+  const Title = PAGE_TITLE.top;
+  const dispatch: AppDispatch = useDispatch();
+
   const {
     todoItemsData,
     amount,
@@ -18,14 +23,12 @@ const ListTodo: FC = () => {
     filterVal,
     setFilterVal,
     isOpen,
-  } = useListTodoState();
-
-  const dispatch: AppDispatch = useDispatch();
+  } = useListTodoStateHandle();
 
   if (amount === 0) {
     return (
       <section className="todo no-task">
-        <h2>Tasks</h2>
+        <PageTitle title={Title} />
         <div className="todo-comment">
           <p>現在タスクはありません。</p>
         </div>
@@ -40,7 +43,7 @@ const ListTodo: FC = () => {
 
   return (
     <section className="todo">
-      <h2>Tasks</h2>
+      <PageTitle title={Title} />
 
       <div className="search">
         <Form
@@ -57,7 +60,9 @@ const ListTodo: FC = () => {
               value={filterVal}
               onChange={(e) => setFilterVal(e.target.value)}
             />
-            <Button type={"submit"} className={"default-btn color-reverse-btn"}>検索</Button>
+            <Button type={"submit"} className={"default-btn color-reverse-btn"}>
+              検索
+            </Button>
           </div>
         </Form>
       </div>
@@ -103,4 +108,4 @@ const ListTodo: FC = () => {
   );
 };
 
-export default ListTodo;
+export default TopTodoList;
