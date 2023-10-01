@@ -2,10 +2,11 @@ import { FC } from "react";
 import { clearTodo } from "../../features/actions/TodoSlice";
 import { closeModal } from "../../features/actions/ModalSlice";
 import Button from "../atoms/Button";
-import useModalStateHandle from "../../features/hooks/Modal/useModalStateHandle";
+import { AppDispatch } from "../../store/store";
+import { useDispatch } from "react-redux";
 
 const Modal: FC = () => {
-  const { dispatch, todoItemsData, amount } = useModalStateHandle();
+  const dispatch: AppDispatch = useDispatch();
 
   return (
     <aside className="modal-container">
@@ -15,7 +16,7 @@ const Modal: FC = () => {
           <Button
             className="btn confirm-btn"
             onClick={() => {
-              dispatch(clearTodo({ todoItemsData, amount }));
+              dispatch(clearTodo());
               dispatch(closeModal());
             }}
           >

@@ -10,17 +10,9 @@ const TodoSlice = createSlice({
   initialState: INITIAL_TODO_STATE,
   reducers: {
     addTodo(state, action): void {
-      const getMaxTodoId: () => number = () => {
-        let todoIdArray: number[] = [];
-        state.todoItemsData.map((item) => {
-          todoIdArray.push(item.id);
-        });
-        return Math.max(...todoIdArray);
-      };
-      const setTodoId: number =
-        state.amount !== 0 ? getMaxTodoId() + 1 : INITIAL_TODO_ID;
+      const getMaxTodoId = (): number => Math.max(...state.todoItemsData.map(item => item.id));
       state.todoItemsData.push({
-        id: setTodoId,
+        id: state.amount !== 0 ? getMaxTodoId() + 1 : INITIAL_TODO_ID,
         title: action.payload.title,
         content: action.payload.content,
       });
@@ -28,29 +20,23 @@ const TodoSlice = createSlice({
       state.searchKeyword = "";
     },
     updateTodo(state, action): void {
-      const newTodoItems = state.todoItemsData.map((item) => {
+      state.todoItemsData = state.todoItemsData.map((item) => {
         if (item.id === action.payload.id) {
           return {
             id: action.payload.id,
             title: action.payload.title,
             content: action.payload.content,
           };
-        }
+        };
         return { ...item };
       });
-      state.todoItemsData = newTodoItems;
     },
     deleteTodo(state, action): void {
-      const newTodoItems = state.todoItemsData.filter((item) => {
-        if (item.id !== action.payload) return true;
-      });
-      state.todoItemsData = newTodoItems;
+      state.todoItemsData = state.todoItemsData.filter(item => item.id !== action.payload ? true : false);
       state.amount = state.todoItemsData.length;
     },
-    clearTodo(state, action): TodoStateType {
-      let newTodoState: TodoStateType = action.payload;
-      newTodoState = { todoItemsData: [], amount: 0, searchKeyword: "" };
-      return newTodoState;
+    clearTodo(): TodoStateType {
+      return { todoItemsData: [], amount: 0, searchKeyword: "" };
     },
     searchTodo(state, action): void {
       state.searchKeyword = action.payload;
