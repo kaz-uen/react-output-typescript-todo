@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { EventType } from "../../../types/EventType";
 import { addTodo } from "../../actions/TodoSlice";
 
-const useSample = () => {
+const useCreateTodoStateHandle = () => {
   const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -36,4 +36,4 @@ const useSample = () => {
   };
 };
 
-export default useSample;
+export default useCreateTodoStateHandle;
