@@ -1,5 +1,6 @@
-import { FC } from "react";
-import { InputProps } from "../../../types/FormType";
+import { ComponentProps, FC } from "react";
+
+type InputProps = ComponentProps<"input">;
 
 const Input: FC<InputProps> = ({ title, id, type, placeholder, value, onChange }) => {
   return (

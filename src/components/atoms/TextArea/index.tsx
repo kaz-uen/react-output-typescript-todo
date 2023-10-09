@@ -1,5 +1,6 @@
-import { FC } from "react";
-import { TextAreaProps } from "../../../types/FormType";
+import { ComponentProps, FC } from "react";
+
+type TextAreaProps = ComponentProps<"textarea">;
 
 const TextArea: FC<TextAreaProps> = ({ title, id, placeholder, value, onChange }) => {
   return (

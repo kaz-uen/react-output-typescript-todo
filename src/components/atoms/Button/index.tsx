@@ -1,5 +1,6 @@
-import { FC } from "react";
-import { ButtonProps } from "../../../types/FormType";
+import { ComponentProps, FC } from "react";
+
+type ButtonProps = ComponentProps<"button">;
 
 const Button: FC<ButtonProps> = ({ type, className, onClick, children }) => {
   return (

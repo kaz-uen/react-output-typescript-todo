@@ -1,4 +1,3 @@
-import { ModalStateType } from "../types/ModalType";
 import { TodoItemType, TodoStateType } from "../types/TodoType";
 
 export const INITIAL_TODO_LIST: TodoItemType[] = [
@@ -26,6 +25,10 @@ export const INITIAL_TODO_STATE: TodoStateType = {
 };
 
 export const INITIAL_TODO_ID: number = 1;
+
+type ModalStateType = {
+    isOpen: boolean,
+};
 
 export const INITIAL_MODAL_STATE: ModalStateType = {
   isOpen: false,

@@ -1,5 +1,8 @@
 import { FC, memo } from "react";
-import { PageType } from "../../../types/PageType";
+
+type PageType = {
+  title: string;
+};
 
 const PageTitle: FC<PageType> = memo((props) => {
   const { title } = props;
