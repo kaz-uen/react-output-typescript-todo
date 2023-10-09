@@ -6,13 +6,13 @@ import Form from "../../atoms/Form";
 import Input from "../../atoms/Input";
 import Button from "../../atoms/Button";
 import Modal from "../Modal";
-import useListTodoStateHandle from "../../../features/hooks/ListTodo/useListTodoStateHandle";
+import useTopList from "../../../features/hooks/TodoStateHandle/useTopList";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../../store/store";
 import PageTitle from "../../atoms/PageTitle";
 import { PAGE_TITLE } from "../../../constants/InitialData";
 
-const TopTodoList: FC = () => {
+const TopList: FC = () => {
   const Title = PAGE_TITLE.top;
   const dispatch: AppDispatch = useDispatch();
 
@@ -23,7 +23,7 @@ const TopTodoList: FC = () => {
     filterVal,
     setFilterVal,
     isOpen,
-  } = useListTodoStateHandle();
+  } = useTopList();
 
   if (amount === 0) {
     return (
@@ -108,4 +108,4 @@ const TopTodoList: FC = () => {
   );
 };
 
-export default TopTodoList;
+export default TopList;

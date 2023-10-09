@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { EventType } from "../../../types/EventType";
 import { updateTodo } from "../../actions/TodoSlice";
 
-const useEditTodoStateHandle = () => {
+const useEdit = () => {
   const [todo, setTodo] = useState<TodoItemType | undefined>();
   const [updateTitle, setUpdateTitle] = useState<string | undefined>("");
   const [updateContent, setUpdateContent] = useState<string | undefined>("");
@@ -56,4 +56,4 @@ const useEditTodoStateHandle = () => {
   };
 };
 
-export default useEditTodoStateHandle;
+export default useEdit;

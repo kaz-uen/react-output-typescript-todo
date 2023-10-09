@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { useSelector } from "../../../store/store";
 import { TodoItemType } from "../../../types/TodoType";
 
-const useDetailTodoStateHandle = () => {
+const useDetail = () => {
   const todoId = Number(useParams<string>().paramId);
   const { todoItemsData } = useSelector((state) => state.todo);
   const [todo, setTodo] = useState<TodoItemType>({
@@ -23,4 +23,4 @@ const useDetailTodoStateHandle = () => {
   return { todo };
 };
 
-export default useDetailTodoStateHandle;
+export default useDetail;

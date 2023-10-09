@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useSelector } from "../../../store/store";
 
-const useListTodoState = () => {
+const useTopList = () => {
   const { todoItemsData, amount, searchKeyword } = useSelector(
     (state) => state.todo
   );
@@ -18,4 +18,4 @@ const useListTodoState = () => {
   };
 };
 
-export default useListTodoState;
+export default useTopList;

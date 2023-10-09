@@ -1,13 +1,13 @@
 import { FC } from "react";
 import { Link } from "react-router-dom";
-import useDetailTodoStateHandle from "../../../features/hooks/DetailTodo/useDetailTodoStateHandle";
+import useDetail from "../../../features/hooks/TodoStateHandle/useDetail";
 import PageTitle from "../../atoms/PageTitle";
 import { PAGE_TITLE } from "../../../constants/InitialData";
 
-const DetailTodoContent: FC = () => {
+const DetailContent: FC = () => {
   const Title = PAGE_TITLE.detail;
 
-  const { todo } = useDetailTodoStateHandle();
+  const { todo } = useDetail();
   const { id, title, content } = todo;
   const texts = content?.split(/(\n)/).map((text) => {
     return text.match(/\n/) ? <br /> : text;
@@ -36,4 +36,4 @@ const DetailTodoContent: FC = () => {
   );
 };
 
-export default DetailTodoContent;
+export default DetailContent;
