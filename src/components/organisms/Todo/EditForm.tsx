@@ -2,11 +2,12 @@ import { FC } from "react";
 import Form from "../../atoms/Form";
 import Input from "../../atoms/Input";
 import TextArea from "../../atoms/TextArea";
-import Button from "../../atoms/Button";
 import DefaultFormLayout from "../../templates/DefaultFormLayout";
 import PageTitle from "../../atoms/PageTitle";
 import { PAGE_TITLE } from "../../../constants/InitialData";
 import useEdit from "../../../features/hooks/TodoStateHandle/useEdit";
+import styled from "styled-components";
+import DefaultButton from "../../atoms/Button/Default";
 
 const EditForm: FC = () => {
   const Title = PAGE_TITLE.edit;
@@ -36,14 +37,18 @@ const EditForm: FC = () => {
           value={updateContent}
           onChange={(e) => setUpdateContent(e.target.value)}
         />
-        <div className="btn-center">
-          <Button type={"submit"} className={"default-btn color-reverse-btn"}>
+        <SSubmit>
+          <DefaultButton type={"submit"}>
             更新
-          </Button>
-        </div>
+          </DefaultButton>
+        </SSubmit>
       </Form>
     </DefaultFormLayout>
   );
 };
+
+const SSubmit = styled.div`
+    text-align: center;
+`;
 
 export default EditForm;
