@@ -1,8 +1,13 @@
 import { ComponentProps, FC } from "react";
 
-type InputProps = ComponentProps<"input">;
-
-const Input: FC<InputProps> = ({ title, id, type, placeholder, value, onChange }) => {
+const Input: FC<ComponentProps<"input">> = ({
+  title,
+  id,
+  type,
+  placeholder,
+  value,
+  onChange,
+}) => {
   return (
     <>
       <label htmlFor={id}>{title}</label>

@@ -1,8 +1,10 @@
 import { ComponentProps, FC } from "react";
 
-type FormProps = ComponentProps<"form">;
-
-const Form: FC<FormProps> = ({ onSubmit, className, children }) => {
+const Form: FC<ComponentProps<"form">> = ({
+  onSubmit,
+  className,
+  children,
+}) => {
   return (
     <form onSubmit={onSubmit} className={className}>
       {children}
