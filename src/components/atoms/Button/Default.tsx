@@ -1,23 +1,6 @@
-import { ComponentProps, FC } from "react";
-import styled from "styled-components";
-import BaseStyled from "./Base";
-
-const DefaultButton: FC<ComponentProps<"button">> = ({
-  type,
-  className,
-  onClick,
-  children,
-}) => {
-  return (
-    <StyledButton type={type} className={className} onClick={onClick}>
-      {children}
-    </StyledButton>
-  );
-};
-
-DefaultButton.defaultProps = {
-  type: "button",
-};
+import React, { ComponentProps, FC } from 'react';
+import styled from 'styled-components';
+import BaseStyled from './Base';
 
 const StyledButton = styled(BaseStyled)`
   color: var(--color-white);
@@ -29,5 +12,17 @@ const StyledButton = styled(BaseStyled)`
     background-color: var(--color-white);
   }
 `;
+
+const DefaultButton: FC<ComponentProps<'button'>> = ({ type, className, onClick, children }) => {
+  return (
+    <StyledButton type={type} className={className} onClick={onClick}>
+      {children}
+    </StyledButton>
+  );
+};
+
+DefaultButton.defaultProps = {
+  type: 'button'
+};
 
 export default DefaultButton;

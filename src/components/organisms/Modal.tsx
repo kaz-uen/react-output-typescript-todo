@@ -1,35 +1,10 @@
-import { FC } from "react";
-import { clearTodo } from "../../features/actions/TodoSlice";
-import { closeModal } from "../../features/actions/ModalSlice";
-import { AppDispatch } from "../../store/store";
-import { useDispatch } from "react-redux";
-import styled from "styled-components";
-import ModalButton from "../atoms/Button/Modal";
-
-const Modal: FC = () => {
-  const dispatch: AppDispatch = useDispatch();
-
-  return (
-    <SModal>
-      <div className="modal">
-        <h4>タスクをすべて削除しますか？</h4>
-        <div className="btn-container">
-          <ModalButton
-            onClick={() => {
-              dispatch(clearTodo());
-              dispatch(closeModal());
-            }}
-          >
-            はい
-          </ModalButton>
-          <ModalButton onClick={() => dispatch(closeModal())}>
-            いいえ
-          </ModalButton>
-        </div>
-      </div>
-    </SModal>
-  );
-};
+import React, { FC } from 'react';
+import { clearTodo } from '../../features/actions/TodoSlice';
+import { closeModal } from '../../features/actions/ModalSlice';
+import { AppDispatch } from '../../store/store';
+import { useDispatch } from 'react-redux';
+import styled from 'styled-components';
+import ModalButton from '../atoms/Button/Modal';
 
 const SModal = styled.aside`
   position: fixed;
@@ -59,5 +34,28 @@ const SModal = styled.aside`
     justify-content: space-around;
   }
 `;
+
+const Modal: FC = () => {
+  const dispatch: AppDispatch = useDispatch();
+
+  return (
+    <SModal>
+      <div className="modal">
+        <h4>タスクをすべて削除しますか？</h4>
+        <div className="btn-container">
+          <ModalButton
+            onClick={() => {
+              dispatch(clearTodo());
+              dispatch(closeModal());
+            }}
+          >
+            はい
+          </ModalButton>
+          <ModalButton onClick={() => dispatch(closeModal())}>いいえ</ModalButton>
+        </div>
+      </div>
+    </SModal>
+  );
+};
 
 export default Modal;

@@ -1,9 +1,5 @@
-import { ComponentProps, FC } from "react";
-import styled from "styled-components";
-
-const LinkButton: FC<ComponentProps<"div">> = ({ children }) => {
-  return <StyledLink>{children}</StyledLink>;
-};
+import React, { ComponentProps, FC } from 'react';
+import styled from 'styled-components';
 
 const StyledLink = styled.div`
   a {
@@ -27,5 +23,9 @@ const StyledLink = styled.div`
     }
   }
 `;
+
+const LinkButton: FC<ComponentProps<'div'>> = ({ children }) => {
+  return <StyledLink>{children}</StyledLink>;
+};
 
 export default LinkButton;

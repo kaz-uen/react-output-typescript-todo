@@ -1,10 +1,4 @@
-import {
-  MouseEvent,
-  ChangeEvent,
-  KeyboardEvent,
-  FocusEvent,
-  FormEvent,
-} from "react";
+import { MouseEvent, ChangeEvent, KeyboardEvent, FocusEvent, FormEvent } from 'react';
 
 export type EventType = {
   onClick: (event: MouseEvent<HTMLInputElement>) => void;

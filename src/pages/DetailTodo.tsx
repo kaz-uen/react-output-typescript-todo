@@ -1,6 +1,6 @@
-import { FC } from "react";
-import BaseLayout from "../components/templates/BaseLayout";
-import DetailTodoContent from "../components/organisms/Todo/DetailContent";
+import React, { FC } from 'react';
+import BaseLayout from '../components/templates/BaseLayout';
+import DetailTodoContent from '../components/organisms/Todo/DetailContent';
 
 const DetailTodo: FC = () => {
   return (

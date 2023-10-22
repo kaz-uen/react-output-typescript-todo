@@ -1,9 +1,5 @@
-import React, { FC } from "react";
-import styled from "styled-components";
-
-const DefaultFormLayout: FC<{ children: React.ReactNode }> = ({ children }) => {
-  return <SFormLayout>{children}</SFormLayout>;
-};
+import React, { FC } from 'react';
+import styled from 'styled-components';
 
 const SFormLayout = styled.div`
   display: flex;
@@ -35,5 +31,9 @@ const SFormLayout = styled.div`
     height: 10rem;
   }
 `;
+
+const DefaultFormLayout: FC<{ children: React.ReactNode }> = ({ children }) => {
+  return <SFormLayout>{children}</SFormLayout>;
+};
 
 export default DefaultFormLayout;

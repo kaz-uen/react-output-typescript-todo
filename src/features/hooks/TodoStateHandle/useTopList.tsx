@@ -1,11 +1,9 @@
-import { useState } from "react";
-import { useSelector } from "../../../store/store";
+import { useState } from 'react';
+import { useSelector } from '../../../store/store';
 
 const useTopList = () => {
-  const { todoItemsData, amount, searchKeyword } = useSelector(
-    (state) => state.todo
-  );
-  const [filterVal, setFilterVal] = useState("");
+  const { todoItemsData, amount, searchKeyword } = useSelector((state) => state.todo);
+  const [filterVal, setFilterVal] = useState('');
   const { isOpen } = useSelector((state) => state.modal);
 
   return {
@@ -14,7 +12,7 @@ const useTopList = () => {
     searchKeyword,
     filterVal,
     setFilterVal,
-    isOpen,
+    isOpen
   };
 };
 

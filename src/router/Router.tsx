@@ -1,11 +1,11 @@
-import { FC } from "react";
-import { Routes, Route } from "react-router-dom";
-import Home from "../pages/Home";
-import TopTodo from "../pages/TopTodo";
-import DetailTodo from "../pages/DetailTodo";
-import CreateTodo from "../pages/CreateTodo";
-import EditTodo from "../pages/EditTodo";
-import NotFound from "../pages/NotFound";
+import React, { FC } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Home from '../pages/Home';
+import TopTodo from '../pages/TopTodo';
+import DetailTodo from '../pages/DetailTodo';
+import CreateTodo from '../pages/CreateTodo';
+import EditTodo from '../pages/EditTodo';
+import NotFound from '../pages/NotFound';
 
 const Router: FC = () => {
   return (

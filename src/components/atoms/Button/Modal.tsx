@@ -1,22 +1,5 @@
-import { ComponentProps, FC } from "react";
-import styled from "styled-components";
-
-const ModalButton: FC<ComponentProps<"button">> = ({
-  type,
-  className,
-  onClick,
-  children,
-}) => {
-  return (
-    <StyledButton type={type} className={className} onClick={onClick}>
-      {children}
-    </StyledButton>
-  );
-};
-
-ModalButton.defaultProps = {
-  type: "button",
-};
+import React, { ComponentProps, FC } from 'react';
+import styled from 'styled-components';
 
 const StyledButton = styled.button`
   background: transparent;
@@ -26,5 +9,17 @@ const StyledButton = styled.button`
   margin-top: 2.25rem;
   border-radius: var(--radius);
 `;
+
+const ModalButton: FC<ComponentProps<'button'>> = ({ type, className, onClick, children }) => {
+  return (
+    <StyledButton type={type} className={className} onClick={onClick}>
+      {children}
+    </StyledButton>
+  );
+};
+
+ModalButton.defaultProps = {
+  type: 'button'
+};
 
 export default ModalButton;
