@@ -1,10 +1,8 @@
-import { FC } from "react";
-import { Outlet } from "react-router-dom";
+import React, { FC } from 'react';
+import { Outlet } from 'react-router-dom';
 
 const Home: FC = () => {
-  return (
-      <Outlet />
-  );
+  return <Outlet />;
 };
 
 export default Home;

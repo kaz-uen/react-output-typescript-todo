@@ -1,15 +1,15 @@
-import { useCallback, useEffect, useState } from "react";
-import { AppDispatch, useSelector } from "../../../store/store";
-import { TodoItemType } from "../../../types/TodoType";
-import { useNavigate, useParams } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { EventType } from "../../../types/EventType";
-import { updateTodo } from "../../actions/TodoSlice";
+import { useCallback, useEffect, useState } from 'react';
+import { AppDispatch, useSelector } from '../../../store/store';
+import { TodoItemType } from '../../../types/TodoType';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { EventType } from '../../../types/EventType';
+import { updateTodo } from '../../actions/TodoSlice';
 
 const useEdit = () => {
   const [todo, setTodo] = useState<TodoItemType | undefined>();
-  const [updateTitle, setUpdateTitle] = useState<string | undefined>("");
-  const [updateContent, setUpdateContent] = useState<string | undefined>("");
+  const [updateTitle, setUpdateTitle] = useState<string | undefined>('');
+  const [updateContent, setUpdateContent] = useState<string | undefined>('');
   const { todoItemsData } = useSelector((state) => state.todo);
 
   const todoId = Number(useParams().paramId);
@@ -26,22 +26,22 @@ const useEdit = () => {
     });
   }, [todoId]);
 
-  const updateTodoSubmit: EventType["onSubmit"] = useCallback(
+  const updateTodoSubmit: EventType['onSubmit'] = useCallback(
     (e) => {
       e.preventDefault();
-      const isTitle = updateTitle?.trim() !== "";
-      const isContent = updateContent?.trim() !== "";
+      const isTitle = updateTitle?.trim() !== '';
+      const isContent = updateContent?.trim() !== '';
       if (isTitle && isContent) {
         dispatch(
           updateTodo({
             id: todo?.id,
             title: updateTitle?.trim(),
-            content: updateContent?.trim(),
+            content: updateContent?.trim()
           })
         );
-        navigate("/");
+        navigate('/');
       } else {
-        alert("タイトルと詳細内容をどちらも入力してください。");
+        alert('タイトルと詳細内容をどちらも入力してください。');
       }
     },
     [updateTitle, updateContent]
@@ -52,7 +52,7 @@ const useEdit = () => {
     setUpdateTitle,
     updateContent,
     setUpdateContent,
-    updateTodoSubmit,
+    updateTodoSubmit
   };
 };
 

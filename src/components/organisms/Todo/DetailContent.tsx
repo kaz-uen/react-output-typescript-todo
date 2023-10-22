@@ -1,14 +1,29 @@
-import { FC } from "react";
-import { Link } from "react-router-dom";
-import useDetail from "../../../features/hooks/TodoStateHandle/useDetail";
-import PageTitle from "../../atoms/PageTitle";
-import { PAGE_TITLE } from "../../../constants/InitialData";
-import styled from "styled-components";
-import LinkButton from "../../atoms/Link/Button";
+import React, { FC } from 'react';
+import { Link } from 'react-router-dom';
+import useDetail from '../../../features/hooks/TodoStateHandle/useDetail';
+import PageTitle from '../../atoms/PageTitle';
+import { PAGE_TITLE } from '../../../constants/InitialData';
+import styled from 'styled-components';
+import LinkButton from '../../atoms/Link/Button';
+
+const SContent = styled.div`
+  width: 90vw;
+  margin: 0 auto;
+  padding: 1.5rem 0;
+  max-width: var(--fixed-width);
+  & .content-number,
+  & .content-title,
+  & .content-body {
+    margin-bottom: 1.5rem;
+  }
+`;
+
+const SReturn = styled.div`
+  text-align: center;
+`;
 
 const DetailContent: FC = () => {
   const Title = PAGE_TITLE.detail;
-
   const { todo } = useDetail();
   const { id, title, content } = todo;
   const texts = content?.split(/(\n)/).map((text) => {
@@ -37,21 +52,5 @@ const DetailContent: FC = () => {
     </>
   );
 };
-
-const SContent = styled.div`
-  width: 90vw;
-  margin: 0 auto;
-  padding: 1.5rem 0;
-  max-width: var(--fixed-width);
-  & .content-number,
-  & .content-title,
-  & .content-body {
-    margin-bottom: 1.5rem;
-  }
-`;
-
-const SReturn = styled.div`
-  text-align: center;
-`;
 
 export default DetailContent;

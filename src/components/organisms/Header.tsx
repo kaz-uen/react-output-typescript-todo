@@ -1,24 +1,6 @@
-import { FC } from "react";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
-
-const Header: FC = () => {
-  return (
-    <SHeader>
-      <h1>Todo List</h1>
-      <SNav>
-        <ul className="nav-list">
-          <li>
-            <Link to="/">TOP</Link>
-          </li>
-          <li>
-            <Link to="/create">新規作成</Link>
-          </li>
-        </ul>
-      </SNav>
-    </SHeader>
-  );
-};
+import React, { FC } from 'react';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 const SHeader = styled.header`
   display: flex;
@@ -52,5 +34,23 @@ const SNav = styled.nav`
     }
   }
 `;
+
+const Header: FC = () => {
+  return (
+    <SHeader>
+      <h1>Todo List</h1>
+      <SNav>
+        <ul className="nav-list">
+          <li>
+            <Link to="/">TOP</Link>
+          </li>
+          <li>
+            <Link to="/create">新規作成</Link>
+          </li>
+        </ul>
+      </SNav>
+    </SHeader>
+  );
+};
 
 export default Header;

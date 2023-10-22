@@ -1,16 +1,13 @@
-import { configureStore } from "@reduxjs/toolkit";
-import {
-  useSelector as rawUseSelector,
-  TypedUseSelectorHook,
-} from "react-redux";
-import TodoReducer from "../features/actions/TodoSlice";
-import ModalReducer from "../features/actions/ModalSlice";
+import { configureStore } from '@reduxjs/toolkit';
+import { useSelector as rawUseSelector, TypedUseSelectorHook } from 'react-redux';
+import TodoReducer from '../features/actions/TodoSlice';
+import ModalReducer from '../features/actions/ModalSlice';
 
 const store = configureStore({
   reducer: {
     todo: TodoReducer,
-    modal: ModalReducer,
-  },
+    modal: ModalReducer
+  }
 });
 
 export type RootState = ReturnType<typeof store.getState>;
