@@ -10,26 +10,6 @@ const SFormLayout = styled.div`
   margin: 0 auto;
   padding: 1.5rem 0;
   max-width: var(--fixed-width);
-
-  & input {
-    padding: 0.5em 1em;
-    width: 30rem;
-  }
-  & textarea {
-    padding: 0.5em 1em;
-    width: 30rem;
-  }
-
-  & input,
-  & textarea,
-  & button {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-  }
-  & textarea {
-    display: block;
-    height: 10rem;
-  }
 `;
 
 const DefaultFormLayout: FC<{ children: React.ReactNode }> = ({ children }) => {

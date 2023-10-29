@@ -17,22 +17,25 @@ const SModal = styled.aside`
   display: flex;
   align-items: center;
   justify-content: center;
-  & .modal {
-    background: var(--color-white);
-    width: 80vw;
-    max-width: 400px;
-    border-radius: var(--radius);
-    padding: 2rem 1rem;
-    text-align: center;
-  }
-  & h4 {
-    margin-bottom: 0;
-    line-height: 1.5;
-  }
-  & .btn-container {
-    display: flex;
-    justify-content: space-around;
-  }
+`;
+
+const SModalBody = styled.div`
+  background: var(--color-white);
+  width: 80vw;
+  max-width: 400px;
+  border-radius: var(--radius);
+  padding: 2rem 1rem;
+  text-align: center;
+`;
+
+const SModalTitle = styled.h4`
+  margin-bottom: 0;
+  line-height: 1.5;
+`;
+
+const SModalBtnContainer = styled.div`
+  display: flex;
+  justify-content: space-around;
 `;
 
 const Modal: FC = () => {
@@ -40,9 +43,9 @@ const Modal: FC = () => {
 
   return (
     <SModal>
-      <div className="modal">
-        <h4>タスクをすべて削除しますか？</h4>
-        <div className="btn-container">
+      <SModalBody>
+        <SModalTitle>タスクをすべて削除しますか？</SModalTitle>
+        <SModalBtnContainer>
           <ModalButton
             onClick={() => {
               dispatch(clearTodo());
@@ -52,8 +55,8 @@ const Modal: FC = () => {
             はい
           </ModalButton>
           <ModalButton onClick={() => dispatch(closeModal())}>いいえ</ModalButton>
-        </div>
-      </div>
+        </SModalBtnContainer>
+      </SModalBody>
     </SModal>
   );
 };

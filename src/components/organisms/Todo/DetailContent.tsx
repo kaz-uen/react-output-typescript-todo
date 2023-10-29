@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-import { Link } from 'react-router-dom';
 import useDetail from '../../../features/hooks/TodoStateHandle/useDetail';
 import PageTitle from '../../atoms/PageTitle';
 import { PAGE_TITLE } from '../../../constants/InitialData';
@@ -11,11 +10,18 @@ const SContent = styled.div`
   margin: 0 auto;
   padding: 1.5rem 0;
   max-width: var(--fixed-width);
-  & .content-number,
-  & .content-title,
-  & .content-body {
-    margin-bottom: 1.5rem;
-  }
+`;
+
+const SNumber = styled.p`
+  margin-bottom: 3rem;
+`;
+
+const STitle = styled.h3`
+  margin-bottom: 3rem;
+`;
+
+const SBody = styled.div`
+  margin-bottom: 3rem;
 `;
 
 const SReturn = styled.div`
@@ -34,20 +40,18 @@ const DetailContent: FC = () => {
     <>
       <SContent>
         <PageTitle title={Title} />
-        <p className="content-number">ID: {id}</p>
-        <h3 className="content-title">{title}</h3>
-        <div className="content-body">
+        <SNumber>ID: {id}</SNumber>
+        <STitle>{title}</STitle>
+        <SBody>
           <p>
             内容: <br />
             {texts}
           </p>
-        </div>
+        </SBody>
       </SContent>
 
       <SReturn>
-        <LinkButton>
-          <Link to="/">TOPへ戻る</Link>
-        </LinkButton>
+        <LinkButton to="/">TOPへ戻る</LinkButton>
       </SReturn>
     </>
   );

@@ -1,10 +1,30 @@
-import { ComponentProps, FC } from 'react';
+import React, { ComponentProps, FC } from 'react';
+import styled from 'styled-components';
+
+const SLabel = styled.label`
+  display: block;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+`;
+
+const STextarea = styled.textarea`
+  padding: 0.5em 1em;
+  display: block;
+  width: 30rem;
+  height: 10rem;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+`;
 
 const TextArea: FC<ComponentProps<'textarea'>> = ({ title, id, placeholder, value, onChange }) => {
+  if (!title) {
+    return <STextarea id={id} placeholder={placeholder} value={value} onChange={onChange} />;
+  }
+
   return (
     <>
-      <label htmlFor={id}>{title}</label>
-      <textarea id={id} placeholder={placeholder} value={value} onChange={onChange} />
+      <SLabel htmlFor={id}>{title}</SLabel>
+      <STextarea id={id} placeholder={placeholder} value={value} onChange={onChange} />
     </>
   );
 };
