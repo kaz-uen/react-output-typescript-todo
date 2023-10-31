@@ -1,11 +1,14 @@
-/*
-Font
-*/
+import { createGlobalStyle } from 'styled-components';
+
+const GlobalStyle = createGlobalStyle`
+/**
+ * Font
+ */
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap");
 
-/*
-Variables
-*/
+/**
+ * Variables
+ */
 :root {
   --color-primary: #c2773e;
   --color-primary-dark: #886f2c;
@@ -86,3 +89,7 @@ h4 {
     line-height: 1;
   }
 }
+
+`;
+
+export default GlobalStyle;
