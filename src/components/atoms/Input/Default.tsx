@@ -1,25 +1,29 @@
-import React, { ComponentProps, FC } from 'react';
+import React, { FC, InputHTMLAttributes } from 'react';
 import styled from 'styled-components';
 import { BaseStyledInput, BaseStyledLabel } from './Base';
 
 const SLabel = styled(BaseStyledLabel)``;
-const SInput = styled(BaseStyledInput)``;
+const SInput = styled(BaseStyledInput)`
+  width: ${({ disabled }) => (disabled ? '70%' : '100%')};
+  margin-right: ${({ disabled }) => (disabled ? '0.2em' : '0')};
+`;
 
-const DefaultInput: FC<ComponentProps<'input'>> = ({ title, id, type, placeholder, value, onChange }) => {
-  if (!title) {
-    return <SInput id={id} type={type} placeholder={placeholder} value={value} onChange={onChange} />;
-  }
+type DefaultInputProps = InputHTMLAttributes<HTMLInputElement> & {
+  disabled?: boolean;
+};
 
+const DefaultInput: FC<DefaultInputProps> = ({ disabled, title, id, type, placeholder, value, onChange }) => {
   return (
     <>
-      <SLabel htmlFor={id}>{title}</SLabel>
-      <SInput id={id} type={type} placeholder={placeholder} value={value} onChange={onChange} />
+      {title && <SLabel htmlFor={id}>{title}</SLabel>}
+      <SInput disabled={disabled} id={id} type={type} placeholder={placeholder} value={value} onChange={onChange} />
     </>
   );
 };
 
 DefaultInput.defaultProps = {
-  type: 'text'
+  type: 'text',
+  disabled: false
 };
 
 export default DefaultInput;

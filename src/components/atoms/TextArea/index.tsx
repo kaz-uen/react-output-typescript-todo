@@ -17,13 +17,9 @@ const STextarea = styled.textarea`
 `;
 
 const TextArea: FC<ComponentProps<'textarea'>> = ({ title, id, placeholder, value, onChange }) => {
-  if (!title) {
-    return <STextarea id={id} placeholder={placeholder} value={value} onChange={onChange} />;
-  }
-
   return (
     <>
-      <SLabel htmlFor={id}>{title}</SLabel>
+      {title && <SLabel htmlFor={id}>{title}</SLabel>}
       <STextarea id={id} placeholder={placeholder} value={value} onChange={onChange} />
     </>
   );
