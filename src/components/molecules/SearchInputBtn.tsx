@@ -1,6 +1,7 @@
-import React, { ComponentProps, FC } from 'react';
+import React, { FC } from 'react';
 import DefaultButton from '../atoms/Button/Default';
-import DefaultInput from '../atoms/Input/Default';
+import Input from '../atoms/Input/Default';
+import { InputPropsType } from '../../types/InputType';
 import styled from 'styled-components';
 
 const SSearchInputBtn = styled.div`
@@ -8,17 +9,17 @@ const SSearchInputBtn = styled.div`
   margin-bottom: 0.5em;
 `;
 
-const SearchInputBtn: FC<ComponentProps<'input'>> = ({ title, id, type, placeholder, value, onChange }) => {
+const SearchInputBtn: FC<InputPropsType> = ({ title, id, type, placeholder, value, onChange, isSearchInput }) => {
   return (
     <SSearchInputBtn>
-      <DefaultInput
-        disabled={true}
+      <Input
         title={title}
         id={id}
         type={type}
         placeholder={placeholder}
         value={value}
         onChange={onChange}
+        isSearchInput={isSearchInput}
       />
       <DefaultButton type={'submit'}>検索</DefaultButton>
     </SSearchInputBtn>

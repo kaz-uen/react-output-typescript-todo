@@ -100,6 +100,7 @@ const TopList: FC = () => {
             type={'text'}
             value={filterVal}
             onChange={(e) => setFilterVal(e.target.value)}
+            isSearchInput={true}
           />
         </Form>
       </SSearch>
