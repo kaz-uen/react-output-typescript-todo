@@ -1,5 +1,6 @@
-import React, { ComponentProps, FC } from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components';
+import { ButtonPropsType } from '../../../types/ButtonType';
 
 const StyledButton = styled.button`
   background: transparent;
@@ -10,7 +11,7 @@ const StyledButton = styled.button`
   border-radius: var(--radius);
 `;
 
-const ModalButton: FC<ComponentProps<'button'>> = ({ type, className, onClick, children }) => {
+const ModalButton: FC<ButtonPropsType> = ({ type, className, onClick, children }) => {
   return (
     <StyledButton type={type} className={className} onClick={onClick}>
       {children}

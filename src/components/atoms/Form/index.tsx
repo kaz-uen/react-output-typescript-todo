@@ -1,12 +1,13 @@
-import React, { ComponentProps, FC } from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components';
+import { FormPropsType } from '../../../types/FormType';
 
 const SForm = styled.form`
   display: flex;
   flex-direction: column;
 `;
 
-const Form: FC<ComponentProps<'form'>> = ({ onSubmit, className, children }) => {
+const Form: FC<FormPropsType> = ({ onSubmit, className, children }) => {
   return (
     <SForm onSubmit={onSubmit} className={className}>
       {children}

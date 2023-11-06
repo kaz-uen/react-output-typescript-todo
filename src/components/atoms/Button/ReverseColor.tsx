@@ -1,6 +1,7 @@
-import React, { ComponentProps, FC } from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components';
 import BaseStyled from './Base';
+import { ButtonPropsType } from '../../../types/ButtonType';
 
 const StyledButton = styled(BaseStyled)`
   color: var(--color-primary);
@@ -13,7 +14,7 @@ const StyledButton = styled(BaseStyled)`
   }
 `;
 
-const ReverseColorButton: FC<ComponentProps<'button'>> = ({ type, className, onClick, children }) => {
+const ReverseColorButton: FC<ButtonPropsType> = ({ type, className, onClick, children }) => {
   return (
     <StyledButton type={type} className={className} onClick={onClick}>
       {children}
