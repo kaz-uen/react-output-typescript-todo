@@ -1,5 +1,6 @@
-import React, { ComponentProps, FC } from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components';
+import { TextareaPropsType } from '../../../types/TextareaType';
 
 const SLabel = styled.label`
   display: block;
@@ -16,7 +17,7 @@ const STextarea = styled.textarea`
   margin-bottom: 0.5em;
 `;
 
-const TextArea: FC<ComponentProps<'textarea'>> = ({ title, id, placeholder, value, onChange }) => {
+const TextArea: FC<TextareaPropsType> = ({ title, id, placeholder, value, onChange }) => {
   return (
     <>
       {title && <SLabel htmlFor={id}>{title}</SLabel>}
