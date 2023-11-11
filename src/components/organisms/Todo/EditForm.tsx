@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import Form from '../../atoms/Form';
-import Input from '../../atoms/Input';
+import Input from '../../atoms/Input/Default';
 import TextArea from '../../atoms/TextArea';
 import DefaultFormLayout from '../../templates/DefaultFormLayout';
 import PageTitle from '../../atoms/PageTitle';
@@ -10,6 +10,8 @@ import styled from 'styled-components';
 import DefaultButton from '../../atoms/Button/Default';
 
 const SSubmit = styled.div`
+  margin-top: 1em;
+  margin-bottom: 1em;
   text-align: center;
 `;
 
