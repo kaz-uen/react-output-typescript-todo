@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { useSelector as rawUseSelector, TypedUseSelectorHook } from 'react-redux';
-import TodoReducer from '../features/actions/TodoSlice';
-import ModalReducer from '../features/actions/ModalSlice';
+import TodoReducer from '../features/todo/slice';
+import ModalReducer from '../features/modal/slice';
 
 const store = configureStore({
   reducer: {

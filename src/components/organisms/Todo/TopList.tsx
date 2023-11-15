@@ -1,12 +1,12 @@
 import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
-import { deleteTodo, searchTodo } from '../../../features/actions/TodoSlice';
-import { openModal } from '../../../features/actions/ModalSlice';
+import { deleteTodo, searchTodo } from '../../../features/todo/slice';
+import { openModal } from '../../../features/modal/slice';
 import Form from '../../atoms/Form';
 import ReverseColorButton from '../../atoms/Button/ReverseColor';
 import LinkButton from '../../atoms/Link/Button';
 import Modal from '../Modal';
-import useTopList from '../../../features/hooks/TodoStateHandle/useTopList';
+import useTopList from '../../../features/todo/hooks/TodoStateHandle/useTopList';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../../store/store';
 import PageTitle from '../../atoms/PageTitle';

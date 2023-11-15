@@ -1,10 +1,10 @@
 import { useCallback, useEffect, useState } from 'react';
-import { AppDispatch, useSelector } from '../../../store/store';
-import { TodoItemType } from '../../../types/TodoType';
+import { AppDispatch, useSelector } from '../../../../store/store';
+import { TodoItemType } from '../../../../types/TodoType';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { EventType } from '../../../types/EventType';
-import { updateTodo } from '../../actions/TodoSlice';
+import { EventType } from '../../../../types/EventType';
+import { updateTodo } from '../../slice';
 
 const useEdit = () => {
   const [todo, setTodo] = useState<TodoItemType | undefined>();

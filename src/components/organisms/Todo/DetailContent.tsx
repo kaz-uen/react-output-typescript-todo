@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import useDetail from '../../../features/hooks/TodoStateHandle/useDetail';
+import useDetail from '../../../features/todo/hooks/TodoStateHandle/useDetail';
 import PageTitle from '../../atoms/PageTitle';
 import { PAGE_TITLE } from '../../../constants/InitialData';
 import styled from 'styled-components';

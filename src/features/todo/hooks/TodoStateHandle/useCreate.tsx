@@ -1,9 +1,9 @@
 import { useCallback, useState } from 'react';
-import { AppDispatch } from '../../../store/store';
+import { AppDispatch } from '../../../../store/store';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { EventType } from '../../../types/EventType';
-import { addTodo } from '../../actions/TodoSlice';
+import { EventType } from '../../../../types/EventType';
+import { addTodo } from '../../slice';
 
 const useCreate = () => {
   const dispatch: AppDispatch = useDispatch();

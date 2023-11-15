@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
-import { clearTodo } from '../../features/actions/TodoSlice';
-import { closeModal } from '../../features/actions/ModalSlice';
+import { clearTodo } from '../../features/todo/slice';
+import { closeModal } from '../../features/modal/slice';
 import { AppDispatch } from '../../store/store';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
