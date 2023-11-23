@@ -6,31 +6,27 @@ const TodoSlice = createSlice({
   name: 'todo',
   initialState: INITIAL_TODO_STATE,
   reducers: {
-    addTodo(state, action): void {
-      const getMaxTodoId = (): number => Math.max(...state.todoItemsData.map((item) => item.id));
-      state.todoItemsData.push({
-        id: state.amount !== 0 ? getMaxTodoId() + 1 : INITIAL_TODO_ID,
-        title: action.payload.title,
-        content: action.payload.content
-      });
-      state.amount += 1;
-      state.searchKeyword = '';
-    },
-    updateTodo(state, action): void {
-      state.todoItemsData = state.todoItemsData.map((item) => {
-        if (item.id === action.payload.id) {
-          return {
-            id: action.payload.id,
-            title: action.payload.title,
-            content: action.payload.content
-          };
+    saveTodo(state, action): void {
+        if(!action.payload.id) {
+            // for create
+            const id: number = state.amount !== 0 ? Math.max(...state.todoItemsData.map(item => item.id)) + 1 : INITIAL_TODO_ID;
+            action.payload.id = id;
+            state.todoItemsData.push({
+                ...action.payload
+            });
+            state.amount += 1;
+            return;
         }
-        return { ...item };
-      });
+        // for update
+        const index: number = state.todoItemsData.findIndex(it => it.id === action.payload.id);
+        if(index >= 0) {
+            state.todoItemsData[index] = action.payload;
+        }
     },
     deleteTodo(state, action): void {
-      state.todoItemsData = state.todoItemsData.filter((item) => (item.id !== action.payload ? true : false));
-      state.amount = state.todoItemsData.length;
+        const newTodoArray = state.todoItemsData.filter(item => item.id !== action.payload ? true : false);
+        state.todoItemsData = newTodoArray;
+        state.amount = state.todoItemsData.length;
     },
     clearTodo(): TodoStateType {
       return { todoItemsData: [], amount: 0, searchKeyword: '' };
@@ -41,5 +37,5 @@ const TodoSlice = createSlice({
   }
 });
 
-export const { addTodo, updateTodo, deleteTodo, clearTodo, searchTodo } = TodoSlice.actions;
+export const { saveTodo, deleteTodo, clearTodo, searchTodo } = TodoSlice.actions;
 export default TodoSlice.reducer;

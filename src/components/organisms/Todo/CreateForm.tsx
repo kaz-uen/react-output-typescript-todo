@@ -4,7 +4,7 @@ import PageTitle from '../../atoms/PageTitle';
 import Input from '../../atoms/Input/Default';
 import TextArea from '../../atoms/TextArea';
 import DefaultFormLayout from '../../templates/DefaultFormLayout';
-import useCreate from '../../../features/todo/hooks/TodoStateHandle/useCreate';
+import useTodo from '../../../features/todo/hooks/useTodo';
 import { PAGE_TITLE } from '../../../constants/InitialData';
 import styled from 'styled-components';
 import DefaultButton from '../../atoms/Button/Default';
@@ -17,12 +17,12 @@ const SSubmit = styled.div`
 
 const CreateForm: FC = () => {
   const Title = PAGE_TITLE.create;
-  const { todoTitle, setTodoTitle, todoContent, setTodoContent, createTodoSubmit } = useCreate();
+  const { todoTitle, setTodoTitle, todoContent, setTodoContent, todoSubmit } = useTodo();
 
   return (
     <DefaultFormLayout>
       <PageTitle title={Title} />
-      <Form onSubmit={createTodoSubmit}>
+      <Form onSubmit={todoSubmit}>
         <Input
           title={'タイトル'}
           id={'title'}

@@ -5,7 +5,7 @@ import TextArea from '../../atoms/TextArea';
 import DefaultFormLayout from '../../templates/DefaultFormLayout';
 import PageTitle from '../../atoms/PageTitle';
 import { PAGE_TITLE } from '../../../constants/InitialData';
-import useEdit from '../../../features/todo/hooks/TodoStateHandle/useEdit';
+import useTodo from '../../../features/todo/hooks/useTodo';
 import styled from 'styled-components';
 import DefaultButton from '../../atoms/Button/Default';
 
@@ -17,24 +17,24 @@ const SSubmit = styled.div`
 
 const EditForm: FC = () => {
   const Title = PAGE_TITLE.edit;
-  const { updateTitle, setUpdateTitle, updateContent, setUpdateContent, updateTodoSubmit } = useEdit();
+  const { todoTitle, setTodoTitle, todoContent, setTodoContent, todoSubmit } = useTodo();
 
   return (
     <DefaultFormLayout>
       <PageTitle title={Title} />
-      <Form onSubmit={updateTodoSubmit}>
+      <Form onSubmit={todoSubmit}>
         <Input
           title={'タイトル'}
           id={'title'}
           type={'text'}
-          value={updateTitle}
-          onChange={(e) => setUpdateTitle(e.target.value)}
+          value={todoTitle}
+          onChange={(e) => setTodoTitle(e.target.value)}
         />
         <TextArea
           title={'内容'}
           id="content"
-          value={updateContent}
-          onChange={(e) => setUpdateContent(e.target.value)}
+          value={todoContent}
+          onChange={(e) => setTodoContent(e.target.value)}
         />
         <SSubmit>
           <DefaultButton type={'submit'}>更新</DefaultButton>

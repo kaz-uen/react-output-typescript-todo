@@ -6,7 +6,7 @@ import Form from '../../atoms/Form';
 import ReverseColorButton from '../../atoms/Button/ReverseColor';
 import LinkButton from '../../atoms/Link/Button';
 import Modal from '../Modal';
-import useTopList from '../../../features/todo/hooks/TodoStateHandle/useTopList';
+import useTodo from '../../../features/todo/hooks/useTodo';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../../store/store';
 import PageTitle from '../../atoms/PageTitle';
@@ -69,7 +69,7 @@ const TopList: FC = () => {
   const Title = PAGE_TITLE.top;
   const dispatch: AppDispatch = useDispatch();
 
-  const { todoItemsData, amount, searchKeyword, filterVal, setFilterVal, isOpen } = useTopList();
+  const { todoItemsData, amount, searchKeyword, filterVal, setFilterVal, isOpen } = useTodo();
 
   if (amount === 0) {
     return (
