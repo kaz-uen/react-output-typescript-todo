@@ -27,16 +27,16 @@ const useTodo = () => {
     });
 
     // 新規作成ページ 兼 編集ページ
-    const [todoTitle, setTodoTitle] = useState<string | undefined>('');
-    const [todoContent, setTodoContent] = useState<string | undefined>('');
+    const [title, setTitle] = useState<string | undefined>('');
+    const [content, setContent] = useState<string | undefined>('');
 
     // 詳細ページ・編集ページの処理
     useEffect(() => {
       todoItemsData.map((item) => {
         if (item.id === todoId) {
           setTodo(item);
-          setTodoTitle(item.title);
-          setTodoContent(item.content);
+          setTitle(item.title);
+          setContent(item.content);
         }
       });
     }, [todoId]);
@@ -45,14 +45,14 @@ const useTodo = () => {
     const todoSubmit: EventType['onSubmit'] = useCallback(
       (e) => {
         e.preventDefault();
-        const isTitle = todoTitle?.trim() !== '';
-        const isContent = todoContent?.trim() !== '';
+        const isTitle = title?.trim() !== '';
+        const isContent = content?.trim() !== '';
         if (isTitle && isContent) {
           dispatch(
             saveTodo({
               id: todo.id,
-              title: todoTitle?.trim(),
-              content: todoContent?.trim()
+              title: title?.trim(),
+              content: content?.trim()
             })
           );
           navigate('/');
@@ -60,7 +60,7 @@ const useTodo = () => {
           alert('タイトルと詳細内容をどちらも入力してください。');
         }
       },
-      [todoTitle, todoContent]
+      [title, content]
     );
 
     return {
@@ -71,10 +71,10 @@ const useTodo = () => {
       setFilterVal,
       isOpen,
       todo,
-      todoTitle,
-      setTodoTitle,
-      todoContent,
-      setTodoContent,
+      title,
+      setTitle,
+      content,
+      setContent,
       todoSubmit
     };
 };

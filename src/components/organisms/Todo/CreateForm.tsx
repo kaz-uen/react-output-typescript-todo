@@ -17,7 +17,7 @@ const SSubmit = styled.div`
 
 const CreateForm: FC = () => {
   const Title = PAGE_TITLE.create;
-  const { todoTitle, setTodoTitle, todoContent, setTodoContent, todoSubmit } = useTodo();
+  const { title, setTitle, content, setContent, todoSubmit } = useTodo();
 
   return (
     <DefaultFormLayout>
@@ -28,15 +28,15 @@ const CreateForm: FC = () => {
           id={'title'}
           type={'text'}
           placeholder={'タイトルを入力'}
-          value={todoTitle}
-          onChange={(e) => setTodoTitle(e.target.value)}
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
         />
         <TextArea
           title={'内容'}
           id={'content'}
           placeholder={'詳細を入力'}
-          value={todoContent}
-          onChange={(e) => setTodoContent(e.target.value)}
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
         />
         <SSubmit>
           <DefaultButton type={'submit'}>送信</DefaultButton>

@@ -17,7 +17,7 @@ const SSubmit = styled.div`
 
 const EditForm: FC = () => {
   const Title = PAGE_TITLE.edit;
-  const { todoTitle, setTodoTitle, todoContent, setTodoContent, todoSubmit } = useTodo();
+  const { title, setTitle, content, setContent, todoSubmit } = useTodo();
 
   return (
     <DefaultFormLayout>
@@ -27,14 +27,14 @@ const EditForm: FC = () => {
           title={'タイトル'}
           id={'title'}
           type={'text'}
-          value={todoTitle}
-          onChange={(e) => setTodoTitle(e.target.value)}
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
         />
         <TextArea
           title={'内容'}
           id="content"
-          value={todoContent}
-          onChange={(e) => setTodoContent(e.target.value)}
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
         />
         <SSubmit>
           <DefaultButton type={'submit'}>更新</DefaultButton>
