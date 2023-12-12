@@ -10,11 +10,10 @@ const TodoSlice = createSlice({
         if(!action.payload.id) {
             // for create
             const id: number = state.amount !== 0 ? Math.max(...state.todoItemsData.map(item => item.id)) + 1 : INITIAL_TODO_ID;
-            action.payload.id = id;
             state.todoItemsData.push({
-                ...action.payload
+                ...action.payload,
+                id
             });
-            state.amount += 1;
             return;
         }
         // for update
@@ -24,7 +23,7 @@ const TodoSlice = createSlice({
         }
     },
     deleteTodo(state, action): void {
-        const newTodoArray = state.todoItemsData.filter(item => item.id !== action.payload ? true : false);
+        const newTodoArray = state.todoItemsData.filter(item => item.id !== action.payload);
         state.todoItemsData = newTodoArray;
         state.amount = state.todoItemsData.length;
     },
