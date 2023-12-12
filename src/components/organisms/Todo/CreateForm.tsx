@@ -4,7 +4,7 @@ import PageTitle from '../../atoms/PageTitle';
 import Input from '../../atoms/Input/Default';
 import TextArea from '../../atoms/TextArea';
 import DefaultFormLayout from '../../templates/DefaultFormLayout';
-import useCreate from '../../../features/todo/hooks/TodoStateHandle/useCreate';
+import useTodo from '../../../features/todo/hooks/useTodo';
 import { PAGE_TITLE } from '../../../constants/InitialData';
 import styled from 'styled-components';
 import DefaultButton from '../../atoms/Button/Default';
@@ -17,26 +17,26 @@ const SSubmit = styled.div`
 
 const CreateForm: FC = () => {
   const Title = PAGE_TITLE.create;
-  const { todoTitle, setTodoTitle, todoContent, setTodoContent, createTodoSubmit } = useCreate();
+  const { title, setTitle, content, setContent, todoSubmit } = useTodo();
 
   return (
     <DefaultFormLayout>
       <PageTitle title={Title} />
-      <Form onSubmit={createTodoSubmit}>
+      <Form onSubmit={todoSubmit}>
         <Input
           title={'タイトル'}
           id={'title'}
           type={'text'}
           placeholder={'タイトルを入力'}
-          value={todoTitle}
-          onChange={(e) => setTodoTitle(e.target.value)}
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
         />
         <TextArea
           title={'内容'}
           id={'content'}
           placeholder={'詳細を入力'}
-          value={todoContent}
-          onChange={(e) => setTodoContent(e.target.value)}
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
         />
         <SSubmit>
           <DefaultButton type={'submit'}>送信</DefaultButton>

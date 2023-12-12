@@ -6,7 +6,7 @@ import Form from '../../atoms/Form';
 import ReverseColorButton from '../../atoms/Button/ReverseColor';
 import LinkButton from '../../atoms/Link/Button';
 import Modal from '../Modal';
-import useTopList from '../../../features/todo/hooks/TodoStateHandle/useTopList';
+import useTodo from '../../../features/todo/hooks/useTodo';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../../store/store';
 import PageTitle from '../../atoms/PageTitle';
@@ -69,9 +69,9 @@ const TopList: FC = () => {
   const Title = PAGE_TITLE.top;
   const dispatch: AppDispatch = useDispatch();
 
-  const { todoItemsData, amount, searchKeyword, filterVal, setFilterVal, isOpen } = useTopList();
+  const { todoItemsData, searchKeyword, filterVal, setFilterVal, isOpen } = useTodo();
 
-  if (amount === 0) {
+  if (todoItemsData.length === 0) {
     return (
       <SSection>
         <PageTitle title={Title} />
@@ -108,9 +108,7 @@ const TopList: FC = () => {
       <ul>
         {todoItemsData &&
           todoItemsData
-            .filter((item) => {
-              return item.title?.indexOf(searchKeyword) !== -1;
-            })
+            .filter(item => item.title?.indexOf(searchKeyword) !== -1)
             .map((item) => {
               return (
                 <STodoItem key={item.id}>

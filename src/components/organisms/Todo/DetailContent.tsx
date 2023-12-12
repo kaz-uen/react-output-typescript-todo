@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import useDetail from '../../../features/todo/hooks/TodoStateHandle/useDetail';
+import useTodo from '../../../features/todo/hooks/useTodo';
 import PageTitle from '../../atoms/PageTitle';
 import { PAGE_TITLE } from '../../../constants/InitialData';
 import styled from 'styled-components';
@@ -30,7 +30,7 @@ const SReturn = styled.div`
 
 const DetailContent: FC = () => {
   const Title = PAGE_TITLE.detail;
-  const { todo } = useDetail();
+  const { todo } = useTodo();
   const { id, title, content } = todo;
   const texts = content?.split(/(\n)/).map((text) => {
     return text.match(/\n/) ? <br /> : text;
